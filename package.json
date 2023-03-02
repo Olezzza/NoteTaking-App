@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Olezzza/Note-Taking-App/issues"
   },
-  "homepage": "https://github.com/Olezzza/Note-Taking-App#readme"
+  "homepage": "https://github.com/Olezzza/Note-Taking-App#readme",
+  "devDependencies": {
+    "electron": "^23.1.1"
+  }
 }
