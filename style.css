@@ -11,27 +11,32 @@
 #main {
     height: 100vh;
     width: 65%;
-    border: 3px solid black;
+    background-color: #313131;
 }
 
 #draggableSpace {
     width: 100%;
-    height: 100px;
+    height: 70px;
     -webkit-app-region: drag;
+    background-color: #424242;
 }
 
 #vaultList {
+    display: flex;
     height: 100vh;
     width: 35%;
-    border: 3px solid rgb(201, 84, 84);
+    background-color: #4c4c4c;
+    -webkit-box-shadow: -4px 3px 8px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -4px 3px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -4px 3px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 #topButtons {
     width: 100%;
-    height: 100px;
+    height: 70px;
     display: flex;
     justify-content: flex-end;
-
+    background-color: #424242;
  }
 
  #minimizeBtn, #closeBtn {
@@ -40,10 +45,10 @@
 }
 
 #minimizeBtn {
-    background-color: #24eb1a;
+    background-color: #dbdbdb;
 }
 
 #closeBtn {
-    background-color: #3645c8;
+    background-color: #e36b6b;
     size: 20px;
 }
