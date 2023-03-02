@@ -1,14 +1,21 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcRenderer, ipcMain } = require('electron')
+
+let mainWindow;
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
+    frame: false,
+    resizable: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
     }
   });
   win.loadFile('index.html')
+    win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
