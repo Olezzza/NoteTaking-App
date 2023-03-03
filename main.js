@@ -12,8 +12,8 @@ function createWindow () {
         webPreferences: {
           preload: path.join(__dirname, 'preload.js')
         }
-    
       })
+
     mainWindow.webContents.openDevTools();  
 
       ipcMain.on('set-minimize', (event) => {
