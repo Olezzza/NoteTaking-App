@@ -16,18 +16,16 @@ function createWindow () {
       })
     mainWindow.webContents.openDevTools();  
 
-      ipcMain.on('set-title', (event) => {
+      ipcMain.on('set-minimize', (event) => {
             const webContents = event.sender
             const win = BrowserWindow.fromWebContents(webContents)
             win.minimize();
-            //win.setTitle();
           })
 
         ipcMain.on('set-close', (event) => {
             const webContents = event.sender
             const win = BrowserWindow.fromWebContents(webContents)
             win.close();
-            //win.setTitle();
         })
     
       mainWindow.loadFile('index.html');
