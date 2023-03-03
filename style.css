@@ -16,7 +16,7 @@
 
 #draggableSpace {
     width: 100%;
-    height: 70px;
+    height: 40px;
     -webkit-app-region: drag;
     background-color: #424242;
 }
@@ -33,7 +33,7 @@
 
 #topButtons {
     width: 100%;
-    height: 70px;
+    height: 40px;
     display: flex;
     justify-content: flex-end;
     background-color: #424242;
@@ -45,10 +45,25 @@
 }
 
 #minimizeBtn {
-    background-color: #dbdbdb;
+    background-image: url('resources/icons/ic_minimize_app.png');
+    background-color: #424242;
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#minimizeBtn:hover {
+    background-color: #606060;
 }
 
 #closeBtn {
-    background-color: #e36b6b;
-    size: 20px;
+    background-image: url('resources/icons/ic_close_app.png');
+    background-color: #424242;
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#closeBtn:hover {
+    background-color: #e75c5c;
 }
