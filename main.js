@@ -22,7 +22,7 @@ function createWindow () {
             const webContents = event.sender
             const win = BrowserWindow.fromWebContents(webContents)
             win.minimize();
-          })
+        })
 
         ipcMain.on('set-close', (event) => {
             const webContents = event.sender
@@ -30,6 +30,15 @@ function createWindow () {
             win.close();
         })
 
+        ipcMain.on('get-json', (event) => {
+            const data = fs.readFileSync('listOfStorage.json');
+            console.log(data);
+            const jsonData = JSON.parse(data);
+            console.log(jsonData);
+            console.log(jsonData[0].name);
+            return jsonData;
+            
+        })
 
 
         mainWindow.loadFile('index.html');

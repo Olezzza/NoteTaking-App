@@ -1,11 +1,20 @@
 const button = document.getElementById('button');
 const listOfStorages = document.getElementById('listOfStorages');
 
+
 button.addEventListener('click', () => {
+
+    json = window.electronAPI.getJson();
+
+    console.log(json);
+
+    listOfStorages.innerHTML = "";
+
     fetch('listOfStorage.json')
     .then(response => response.json())
     .then(data => {
       data.forEach(obj => {
+
         let div = document.createElement('div');
         div.className = "storageItem";
         div.myData = {
@@ -23,7 +32,6 @@ button.addEventListener('click', () => {
       console.error('Error parsing JSON file:', error);
     });
   
-  
   })
 
   listOfStorages.onclick = function(event) {
@@ -31,5 +39,5 @@ button.addEventListener('click', () => {
   
     if (target.className != 'storageItem') return; // не на TD? тогда не интересует
   
-    console.log("Хуй тебе, а не " + target.myData.name);
+    console.log("Хуй тебе, а не " + target.myData.name + " " + target.myData.path);
   };
