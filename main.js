@@ -2,16 +2,49 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
-let win;
+let mainWindow;
+let window;
 
-function createWindow () {
-      const mainWindow = new BrowserWindow({
+function createMainWindow() {
+    window = new BrowserWindow({
         width: 1000,
         height: 800,
         frame: false,
         resizable: false,
         webPreferences: {
           nodeIntegration: true,
+          sandBox: false,
+          preload: [path.join(__dirname, 'preload.js'), path.join(__dirname, 'changeNameDir.js')]
+        }
+    })
+
+    window.webContents.openDevTools();  
+
+    ipcMain.on('set-minimize', (event) => {
+        const webContents = event.sender
+        const win = BrowserWindow.fromWebContents(webContents)
+        win.minimize();
+    })
+
+    ipcMain.on('set-close', (event) => {
+        const webContents = event.sender
+        const win = BrowserWindow.fromWebContents(webContents)
+        win.close();
+    })
+
+    window.loadFile('mainWin.html');
+
+}
+
+function createWindow () {
+      mainWindow = new BrowserWindow({
+        width: 1000,
+        height: 800,
+        frame: false,
+        resizable: false,
+        webPreferences: {
+          nodeIntegration: true,
+          sandBox: false,
           preload: path.join(__dirname, 'preload.js')
         }
       })
@@ -30,14 +63,10 @@ function createWindow () {
             win.close();
         })
 
-        ipcMain.on('get-json', (event) => {
-            const data = fs.readFileSync('listOfStorage.json');
-            console.log(data);
-            const jsonData = JSON.parse(data);
-            console.log(jsonData);
-            console.log(jsonData[0].name);
-            return jsonData;
+        ipcMain.on('show-window', () => {
             
+            mainWindow.close();
+            createMainWindow();
         })
 
 

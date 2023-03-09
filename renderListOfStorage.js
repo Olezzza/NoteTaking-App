@@ -1,12 +1,4 @@
-const button = document.getElementById('button');
 const listOfStorages = document.getElementById('listOfStorages');
-
-
-button.addEventListener('click', () => {
-
-    json = window.electronAPI.getJson();
-
-    console.log(json);
 
     listOfStorages.innerHTML = "";
 
@@ -32,7 +24,6 @@ button.addEventListener('click', () => {
       console.error('Error parsing JSON file:', error);
     });
   
-  })
 
   listOfStorages.onclick = function(event) {
     let target = event.target; // где был клик?
@@ -40,4 +31,7 @@ button.addEventListener('click', () => {
     if (target.className != 'storageItem') return; // не на TD? тогда не интересует
   
     console.log("Хуй тебе, а не " + target.myData.name + " " + target.myData.path);
+    window.electronAPI.showMainWindow();
   };
+
+  
